@@ -1,19 +1,17 @@
-
 import matplotlib.image as mpimg
-import matplotlib.pyplot as plt
-import numpy as np
+import pylab
 from skimage.filters import roberts
 from skimage.filters import threshold_otsu
-from pylab import *
 
-matplotlib.rcParams['font.size'] = 9
+
+pylab.matplotlib.rcParams['font.size'] = 9
 
 #######################
-# Función que transforma la imagen inicial en blanco y negro
+# Turns the image into b&w
 def rgb2gray (imgArray):
-   return np.dot(imgArray[...,:3], [0.299,0.587,0.114])
+   return pylab.np.dot(imgArray[..., :3], [0.299, 0.587, 0.114])
 
-img = mpimg.imread('/usr/local/lib/python3.5/dist-packages/skimage/data/vallsuau.jpg')
+img = mpimg.imread('/desired/url/image.jpg')
 gray = rgb2gray(img)
 #
 #######################
@@ -25,7 +23,7 @@ binary = image > thresh
 edge_roberts = roberts(binary)
 
 
-fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(8, 3))
+fig, (ax1, ax2, ax3, ax4) = pylab.plt.subplots(1, 4, figsize=(8, 3))
 #fig = plt.figure(figsize=(8, 2.5))
 #ax1 = plt.subplot(1, 3, 1, adjustable='box-forced')
 #ax2 = plt.subplot(1, 3, 2)
@@ -33,32 +31,32 @@ fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(8, 3))
 
 
 #ORIGINAL
-ax1.imshow(image, cmap=plt.cm.gray)
+ax1.imshow(image, cmap=pylab.plt.cm.gray)
 ax1.set_title('Original')
 ax1.axis('off')
 
-#HISTOGRAMA
+#HISTOGRAM
 ax2.hist(image)
 ax2.set_title('Histogram')
 ax2.axvline(thresh, color='r')
 
 #THRESHOLDED
-ax3.imshow(binary, cmap=plt.cm.gray)
+ax3.imshow(binary, cmap=pylab.plt.cm.gray)
 ax3.set_title('Thresholded')
 ax3.axis('off')
 
 #EDGE_ROBERTS
-ax4.imshow(edge_roberts, cmap=plt.cm.gray)
+ax4.imshow(edge_roberts, cmap=pylab.plt.cm.gray)
 ax4.axis('off')
 ax4.set_title('Edge Roberts')
 
 im = binary
-plt.figure()
-contour(im, levels=[0], colors='black', origin='image')
+pylab.plt.figure()
+pylab.contour(im, levels=[0], colors='black', origin='image')
 
-show()
+pylab.show()
 
-plt.show()
+pylab.plt.show()
 
 
 
