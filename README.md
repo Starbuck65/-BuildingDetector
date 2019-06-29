@@ -1,4 +1,3 @@
-# -BuildingDetector
-*On Progress* 
+# ImageProcessing  
 
-Python software that tries to recognize specified elements in aerial or satellite imagery (buildings, roads, etc.)).
+Python script for image processing using matplotlib, pylab and skimage libs.
